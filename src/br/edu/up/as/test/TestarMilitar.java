@@ -1,24 +1,28 @@
 package br.edu.up.as.test;
 
+
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
 import javax.xml.rpc.ServiceException;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import br.edu.up.as.dao.Dao;
 import br.edu.up.as.dao.FactoryDao;
 import br.edu.up.as.entidade.Militar;
 import br.edu.up.as.service.MilitarService;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestarMilitar {
 
 	static Integer id;
 	
 	@Test
-	public void cadastrarMiltiar() {
+	public void AcadastrarMiltiar() {
 		
 		Militar m = new Militar();
 		m.setId(null);
@@ -38,7 +42,7 @@ public class TestarMilitar {
 	}
 	
 	@Test
-	public void listarMilitar() {		
+	public void BlistarMilitar() {		
 		Dao<Militar> militarDao = FactoryDao.createMilitarDao();	
 		List<Militar> militares = militarDao.listar();
 		
@@ -46,7 +50,7 @@ public class TestarMilitar {
 	}
 	
 	@Test
-	public void alterarMilitar() {	
+	public void CalterarMilitar() {	
 		Dao<Militar> militarDao = FactoryDao.createMilitarDao();	
 		Militar m = militarDao.buscarPorId(id);
 		
@@ -61,7 +65,7 @@ public class TestarMilitar {
 	}
 	
 //	@Test
-//	public void excluirMilitar() {
+//	public void DexcluirMilitar() {
 //		
 //		Militar m = new Militar();
 //		m.setId(id);

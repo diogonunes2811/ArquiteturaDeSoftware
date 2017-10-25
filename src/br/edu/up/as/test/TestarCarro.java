@@ -6,19 +6,22 @@ import java.util.List;
 
 import javax.xml.rpc.ServiceException;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import br.edu.up.as.dao.Dao;
 import br.edu.up.as.dao.FactoryDao;
 import br.edu.up.as.entidade.Carro;
 import br.edu.up.as.service.CarroService;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestarCarro {
 
 	static Integer id;
 	
 	@Test
-	public void cadastrarCarro() {
+	public void AcadastrarCarro() {
 		
 		Carro c = new Carro();
 		c.setId(null);
@@ -37,7 +40,7 @@ public class TestarCarro {
 	}
 	
 	@Test
-	public void listarCarro() {		
+	public void BlistarCarro() {		
 		Dao<Carro> carroDao = FactoryDao.createCarroDao();	
 		List<Carro> carros = carroDao.listar();
 		
@@ -45,7 +48,7 @@ public class TestarCarro {
 	}
 	
 	@Test
-	public void alterarCarro() {	
+	public void CalterarCarro() {	
 		Dao<Carro> carroDao = FactoryDao.createCarroDao();	
 		Carro c = carroDao.buscarPorId(id);
 		
@@ -59,21 +62,21 @@ public class TestarCarro {
 		assertEquals(true,c.getModelo().equals("Gol"));
 	}
 	
-	@Test
-	public void excluirCarro() {
-		
-		Carro c = new Carro();
-		c.setId(id);
-				
-		try {
-			new CarroService().excluir(c);
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
-		
-		Dao<Carro> carroDao = FactoryDao.createCarroDao();	
-		c = carroDao.buscarPorId(id);
-		
-		assertEquals(true,c == null);
-	}
+//	@Test
+//	public void DexcluirCarro() {
+//		
+//		Carro c = new Carro();
+//		c.setId(id);
+//				
+//		try {
+//			new CarroService().excluir(c);
+//		} catch (ServiceException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		Dao<Carro> carroDao = FactoryDao.createCarroDao();	
+//		c = carroDao.buscarPorId(id);
+//		
+//		assertEquals(true,c == null);
+//	}
 }

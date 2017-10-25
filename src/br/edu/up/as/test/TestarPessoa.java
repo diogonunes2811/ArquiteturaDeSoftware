@@ -6,19 +6,22 @@ import java.util.List;
 
 import javax.xml.rpc.ServiceException;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import br.edu.up.as.dao.Dao;
 import br.edu.up.as.dao.FactoryDao;
 import br.edu.up.as.entidade.Pessoa;
 import br.edu.up.as.service.PessoaService;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestarPessoa {
 
 	static Integer id;
 		
 	@Test
-	public void cadastrarPessoa() {
+	public void AcadastrarPessoa() {
 		
 		Pessoa p = new Pessoa();
 		p.setId(null);
@@ -37,7 +40,7 @@ public class TestarPessoa {
 	}
 		
 	@Test
-	public void listarPessoa() {		
+	public void BlistarPessoa() {		
 		Dao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();	
 		List<Pessoa> pessoas = pessoaDao.listar();
 		
@@ -45,7 +48,7 @@ public class TestarPessoa {
 	}
 	
 	@Test
-	public void alterarPessoa() {	
+	public void CalterarPessoa() {	
 		Dao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();	
 		Pessoa p = pessoaDao.buscarPorId(id);
 		
@@ -59,21 +62,21 @@ public class TestarPessoa {
 		assertEquals(true,p.getNome().equals("Pele"));
 	}
 	
-	@Test
-	public void excluirPessoa() {
-		
-		Pessoa p = new Pessoa();
-		p.setId(id);
-				
-		try {
-			new PessoaService().excluir(p);
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
-		
-		Dao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();	
-		p = pessoaDao.buscarPorId(id);
-		
-		assertEquals(true,p == null);
-	}
+//	@Test
+//	public void DexcluirPessoa() {
+//		
+//		Pessoa p = new Pessoa();
+//		p.setId(id);
+//				
+//		try {
+//			new PessoaService().excluir(p);
+//		} catch (ServiceException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		Dao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();	
+//		p = pessoaDao.buscarPorId(id);
+//		
+//		assertEquals(true,p == null);
+//	}
 }
