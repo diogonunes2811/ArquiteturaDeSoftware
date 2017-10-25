@@ -25,7 +25,6 @@ public class TestarCarro {
 		c.setModelo("Golf");
 		c.setPlaca("AAA-0000");
 		
-		
 		try {
 			new CarroService().salvar(c);
 		} catch (ServiceException e) {
