@@ -62,21 +62,21 @@ public class TestarPessoa {
 		assertEquals(true,p.getNome().equals("Pele"));
 	}
 	
-//	@Test
-//	public void DexcluirPessoa() {
-//		
-//		Pessoa p = new Pessoa();
-//		p.setId(id);
-//				
-//		try {
-//			new PessoaService().excluir(p);
-//		} catch (ServiceException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		Dao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();	
-//		p = pessoaDao.buscarPorId(id);
-//		
-//		assertEquals(true,p == null);
-//	}
+	@Test
+	public void DexcluirPessoa() {
+		
+		Pessoa p = new Pessoa();
+		p.setId(id);
+				
+		try {
+			new PessoaService().excluir(p);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		Dao<Pessoa> pessoaDao = FactoryDao.createPessoaDao();	
+		p = pessoaDao.buscarPorId(id);
+		
+		assertEquals(true,p == null);
+	}
 }

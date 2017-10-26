@@ -64,21 +64,21 @@ public class TestarMilitar {
 		assertEquals(true,m.getNome().equals("Silva"));
 	}
 	
-//	@Test
-//	public void DexcluirMilitar() {
-//		
-//		Militar m = new Militar();
-//		m.setId(id);
-//				
-//		try {
-//			new MilitarService().excluir(m);
-//		} catch (ServiceException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		Dao<Militar> militarDao = FactoryDao.createMilitarDao();	
-//		m = militarDao.buscarPorId(id);
-//		
-//		assertEquals(true,m == null);
-//	}
+	@Test
+	public void DexcluirMilitar() {
+		
+		Militar m = new Militar();
+		m.setId(id);
+				
+		try {
+			new MilitarService().excluir(m);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		Dao<Militar> militarDao = FactoryDao.createMilitarDao();	
+		m = militarDao.buscarPorId(id);
+		
+		assertEquals(true,m == null);
+	}
 }

@@ -62,21 +62,21 @@ public class TestarCarro {
 		assertEquals(true,c.getModelo().equals("Gol"));
 	}
 	
-//	@Test
-//	public void DexcluirCarro() {
-//		
-//		Carro c = new Carro();
-//		c.setId(id);
-//				
-//		try {
-//			new CarroService().excluir(c);
-//		} catch (ServiceException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		Dao<Carro> carroDao = FactoryDao.createCarroDao();	
-//		c = carroDao.buscarPorId(id);
-//		
-//		assertEquals(true,c == null);
-//	}
+	@Test
+	public void DexcluirCarro() {
+		
+		Carro c = new Carro();
+		c.setId(id);
+				
+		try {
+			new CarroService().excluir(c);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		Dao<Carro> carroDao = FactoryDao.createCarroDao();	
+		c = carroDao.buscarPorId(id);
+		
+		assertEquals(true,c == null);
+	}
 }
