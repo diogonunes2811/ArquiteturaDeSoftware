@@ -8,23 +8,21 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.rpc.ServiceException;
 
-import br.edu.up.as.dao.PessoaDao;
-import br.edu.up.as.entidade.Pessoa;
-import br.edu.up.as.service.PessoaService;
+import br.edu.up.as.dao.CarroDao;
+import br.edu.up.as.entidade.Carro;
+import br.edu.up.as.service.CarroService;
 
-@Path("/pessoarest")
-public class PessoaRest {
-	
+public class CarroRest {
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void salvar(Pessoa pessoa) {
+	public void salvar(Carro carro) {
 		try {
-			new PessoaService().salvar(pessoa);
+			new CarroService().salvar(carro);
 		} catch (ServiceException e) {			
 			e.printStackTrace();
 		}	
@@ -32,16 +30,16 @@ public class PessoaRest {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Pessoa> listar() {
-		List<Pessoa> pessoas = new PessoaDao().listar();
-		return new ArrayList<>(pessoas);
+	public ArrayList<Carro> listar() {
+		List<Carro> carros = new CarroDao().listar();
+		return new ArrayList<>(carros);
 	}
 	
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public void editarPes(Pessoa pessoa) {
+	public void editarPes(Carro carro) {
 		try {
-			new PessoaService().alterar(pessoa);
+			new CarroService().alterar(carro);
 		} catch (ServiceException e) {			
 			e.printStackTrace();
 		}	
@@ -49,9 +47,9 @@ public class PessoaRest {
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	public void excluir(Pessoa pessoa) {
+	public void excluir(Carro carro) {
 		try {
-			new PessoaService().excluir(pessoa);
+			new CarroService().excluir(carro);
 		} catch (ServiceException e) {			
 			e.printStackTrace();
 		}	

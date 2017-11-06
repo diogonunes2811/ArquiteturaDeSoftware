@@ -8,23 +8,22 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.rpc.ServiceException;
 
-import br.edu.up.as.dao.PessoaDao;
-import br.edu.up.as.entidade.Pessoa;
+import br.edu.up.as.dao.MilitarDao;
+import br.edu.up.as.entidade.Militar;
+import br.edu.up.as.service.MilitarService;
 import br.edu.up.as.service.PessoaService;
 
-@Path("/pessoarest")
-public class PessoaRest {
-	
+public class MilitarRest {
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void salvar(Pessoa pessoa) {
+	public void salvar(Militar militar) {
 		try {
-			new PessoaService().salvar(pessoa);
+			new PessoaService().salvar(militar);
 		} catch (ServiceException e) {			
 			e.printStackTrace();
 		}	
@@ -32,16 +31,16 @@ public class PessoaRest {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Pessoa> listar() {
-		List<Pessoa> pessoas = new PessoaDao().listar();
-		return new ArrayList<>(pessoas);
+	public ArrayList<Militar> listar() {
+		List<Militar> militares = new MilitarDao().listar();
+		return new ArrayList<>(militares);
 	}
 	
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public void editarPes(Pessoa pessoa) {
+	public void editarPes(Militar militar) {
 		try {
-			new PessoaService().alterar(pessoa);
+			new MilitarService().alterar(militar);
 		} catch (ServiceException e) {			
 			e.printStackTrace();
 		}	
@@ -49,9 +48,9 @@ public class PessoaRest {
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	public void excluir(Pessoa pessoa) {
+	public void excluir(Militar militar) {
 		try {
-			new PessoaService().excluir(pessoa);
+			new MilitarService().excluir(militar);
 		} catch (ServiceException e) {			
 			e.printStackTrace();
 		}	
